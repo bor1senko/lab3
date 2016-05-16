@@ -10,6 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+'''
+pas 12345678
+name lab3
+email i.**97@gmail.com
+'''
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -37,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'firstapp',
 )
 
 MIDDLEWARE_CLASSES = (
