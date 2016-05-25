@@ -19,6 +19,7 @@ email i.**97@gmail.com
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEDIA_ROOT = '/home/ivan/prog/isp_lab3/mysite/'
 
 
 # Quick-start development settings - unsuitable for production
