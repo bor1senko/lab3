@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="utf-8" />
-        <title>Документ без названия</title>
-    </head>
-    <body>
-      <p>
-        хер
-      </p>
-
-      <img src="firstapp/YeAFnwl137E.jpg" alt="foto" />
-    </body>
-</html>
+<p>  search result </p>
+{% if listic %}
+  <p>
+    {{ listic.count}}
+  </p>
+  {% for u in listic %}
+  <p>  {{ u.text }}</p>
+  <p>----------------------------------------------------------------------------</p>
+  {% endfor %}
+{% else %}
+  <p>is empty</p>
+{% endif %}
