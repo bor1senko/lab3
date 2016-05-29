@@ -4,6 +4,8 @@ import parser
 from lxml import html
 
 
+#sdfsdfsd
+
 
 class URLL(models.Model):
     url_adres = models.URLField(max_length = 200)
