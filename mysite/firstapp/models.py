@@ -37,7 +37,7 @@ class ttt(models.Model):
     text = models.TextField()
     def ko(self):
         self.text = "213"
-    
+
 
 class Text(models.Model):
     text = models.TextField()

@@ -25,7 +25,14 @@ def search_form(request):
 def search(request):
     if 'q' in request.GET:
         q = request.GET['q']
-        listic = URLL.objects.filter(index__icontains=q.lower())
+        listic = set()
+        q = q.split(' ')
+        for qq in q:
+            if qq != '':
+                listic = listic.union(list(URLL.objects.filter(index__icontains=qq.lower())))
+        q = " ".join(q)
+        if len(listic) == 0 and q == '':
+            listic = URLL.objects.all()
         template = loader.get_template('firstapp/index2.html')
         context = RequestContext(request, {'listic': listic, 'q': q, })
     return HttpResponse(template.render(context))
