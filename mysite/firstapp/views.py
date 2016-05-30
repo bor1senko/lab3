@@ -14,7 +14,7 @@ def index(request):
 
 
 def index2(request):
-    listic = Text.objects.all()
+    listic = URLL.objects.all()
     template = loader.get_template('firstapp/index2.html')
     context = RequestContext(request, {'listic':listic,})
     return HttpResponse(template.render(context))
@@ -25,7 +25,7 @@ def search_form(request):
 def search(request):
     if 'q' in request.GET:
         q = request.GET['q']
-        listic = Text.objects.filter(text__icontains=q)
+        listic = URLL.objects.filter(index__icontains=q.lower())
         template = loader.get_template('firstapp/index2.html')
-        context = RequestContext(request, {'listic': listic,})
+        context = RequestContext(request, {'listic': listic, 'q': q, })
     return HttpResponse(template.render(context))

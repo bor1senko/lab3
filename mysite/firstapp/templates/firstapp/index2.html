@@ -1,12 +1,28 @@
-<p>  search result </p>
-{% if listic %}
-  <p>
-    {{ listic.count}}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static "firstapp/style2.css" %}" >
+    <title>Search</title>
+  </head>
+  <body>
+    <div class="container">
+    <form  class="center" action="/search/" method="get">
+      <input class="search_text" type="text" name="q"  value="{{ q }}">
+      <input class="search_button" type="submit"  value="Search">
+    </form>
+  </div>
+  <div class="content">
+    {% if listic %}
+      {% for u in listic  %}
+  <p >  <a class="search_result" href="{{ u.url_adres }}">{{ u.title  }}</a>
+      <br>{{ u.url_adres  }}
   </p>
-  {% for u in listic %}
-  <p>  {{ u.text }}</p>
-  <p>----------------------------------------------------------------------------</p>
-  {% endfor %}
-{% else %}
-  <p>is empty</p>
-{% endif %}
+    {% endfor %}
+    {% else %}
+      <p>is empty</p>
+    {% endif %}
+    </div>
+  </body>
+</html>
