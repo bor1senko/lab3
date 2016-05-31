@@ -23,16 +23,17 @@ def search_form(request):
     return render_to_response('firstapp/search_form.html')
 
 def search(request):
+    q =str()
     if 'q' in request.GET:
         q = request.GET['q']
-        listic = set()
-        q = q.split(' ')
-        for qq in q:
-            if qq != '':
-                listic = listic.union(list(URLL.objects.filter(index__icontains=qq.lower())))
-        q = " ".join(q)
-        if len(listic) == 0 and q == '':
-            listic = URLL.objects.all()
-        template = loader.get_template('firstapp/index2.html')
-        context = RequestContext(request, {'listic': listic, 'q': q, })
+    listic = set()
+    q = q.split(' ')
+    for qq in q:
+        if qq != '':
+            listic = listic.union(list(URLL.objects.filter(index__icontains=qq.lower())))
+    q = " ".join(q)
+    if len(listic) == 0 and q == '':
+        listic = URLL.objects.all()
+    template = loader.get_template('firstapp/index2.html')
+    context = RequestContext(request, {'listic': listic, 'q': q, })
     return HttpResponse(template.render(context))
