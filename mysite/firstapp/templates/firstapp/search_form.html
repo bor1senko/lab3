@@ -1,13 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>search</title>
+    <link rel="stylesheet" type="text/css" href="{% static "firstapp/style.css" %}" >
+    <title></title>
   </head>
   <body>
-    <form action="/search/" method="get">
-      <input type="text" name="q" >
-      <input type="submit"  value="Search">
+    <div class="container">
+    <img  class="logo" src="{% static "firstapp/logo.png" %}" alt="logo" />
+     <form  class="center" action="/search/" method="get">
+      <input class="search_text" ype="text" name="q" >
+      <input class="search_button" type="submit"  value="Search">
     </form>
-
+    </div>
   </body>
 </html>

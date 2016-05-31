@@ -1,0 +1,36 @@
+.container{
+  height: 40px;
+  width: 700px;
+  }
+.center{
+margin-left: 100px;
+width: 600px;
+height: 40px;
+background: #FFD700;
+}
+.search_button {
+background: #FFD700;
+background-image: url(search.png) ;
+background-repeat: no-repeat;
+background-size: 30%;
+text-align: left;
+background-position: right;
+width: 72px;
+height: 30px;
+}
+.search_text {
+  margin-left: 2px;
+  height: 30px;
+  width: 510px;
+  font-size: 18px;
+  margin-top: 2px;
+}
+.content{
+  margin-left: 100px;
+  margin-top: 40px;
+}
+.search_result{
+  font-size: 20px;
+  color: blue;
+  text-decoration: none;
+}
