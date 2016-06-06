@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "firstapp/styleadd.css" %}">
+    <title></title>
+  </head>
+  <body>
+    <form class="form_change" action="/save{{obj.id}}/" method="get">
+      <textarea name="p" rows="8" cols="40"> {{ obj.index }}</textarea>
+      <input type="button"  value="save">
+    </form>
+  </body>
+</html>

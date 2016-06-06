@@ -1,0 +1,50 @@
+body {
+  background:#8FBC8F ;
+}
+
+.text {
+  height: 30px;
+  width: 600px;
+  margin: auto;
+  font-size: 25px;
+  font-family: sans-serif;
+}
+
+.center {
+  height: 30px;
+  width: 600px;
+  margin: auto;
+}
+
+.area_text {
+  width: 550px;
+  height: 22px;
+  margin: auto;
+  margin-top: 1px;
+}
+
+.area_button {
+  background: #4B0082;
+  border: 0px;
+  width: 40px;
+  height: 24px;
+  text-align: center;
+}
+
+.area_button:hover {
+  background: #8A2BE2;
+  margin-top: 4px;
+}
+
+.form_change{
+  width: 800px;
+  margin: auto;
+}
+
+.index_change {
+width: 800px;
+height: 500px;
+overflow: scroll;
+word-wrap: break-word;  
+
+}

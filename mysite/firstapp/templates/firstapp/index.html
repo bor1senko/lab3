@@ -1,7 +1,7 @@
+ <p>
+   <a href="/search-form"> search</a> ____  <a href="/add-index"> add to index</a>
+ </p>
 {% if url_list %}
-<p>
-  search <urls>                                                                                                                                                                                                      </urls>
-</p>
 <ul>
   {% for urll in url_list %}
   <li> <a href="{{urll.url_adres}}">{{ urll.url_adres }}</a></li>

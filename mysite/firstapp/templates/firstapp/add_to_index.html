@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "firstapp/styleadd.css" %}">
+    <title>add to index</title>
+  </head>
+  <body>
+    <p class="text">
+      Поле для индексации url
+    </p>
+    <form class="center " action="/add-index/" method="get">
+      <input class="area_text" type="text" name="q" >
+      <input class="area_button" type="submit" value="add" >
+    </form>
+    {% for u in listic %}
+    <p>
+      <a href="/info{{ u.id }}">{{ u.url_adres }}</a>
+      </p>
+    {% endfor %}
+  </body>
+</html>

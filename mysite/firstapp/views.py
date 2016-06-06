@@ -6,6 +6,27 @@ from .models import URLL,Text
 from django.shortcuts import render_to_response
 from django.db.models.query import QuerySet
 
+def add_index(request, num="1"):
+    if 'p' in request.GET:
+        p = request.GET['p']
+    if 'q' in request.GET:
+        q = request.GET['q']
+        url = URLL(url_adres=q, flag=True)
+        if url not in URLL.objects.all():
+            url.save()
+    template = loader.get_template('firstapp/add_to_index.html')
+    listic = URLL.objects.all()
+    context = RequestContext(request, {'listic': listic,})
+    return HttpResponse(template.render(context))
+
+def info(request, num="1"):
+    template = loader.get_template('firstapp/info.html')
+    obj = URLL.objects.get(id=int(num))
+    context = RequestContext(request,{'obj': obj,})
+    return HttpResponse(template.render(context))
+
+
+
 def index(request):
         url_list = URLL.objects.all()
         template = loader.get_template('firstapp/index.html')
