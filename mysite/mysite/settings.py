@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
-#import djcelery
-#djcelery.setup_loader()
+import djcelery
+djcelery.setup_loader()
 '''
 pas 12345678
 name lab3
@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'firstapp',
+   'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,6 +114,4 @@ STATIC_URL = '/static/'
 #broker
 BROKER_HOST = "localhost"
 BROKER_PORT = 5672
-BROKER_USER = "myusername"
-BROKER_PASSWORD = "mypassword"
-BROKER_VHOST = "myvhost"
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"

@@ -1,9 +1,13 @@
 from django.db import models
 import requests
+from requests import RequestException
 import parser
 from lxml import html
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from celery.task import periodic_task
+from celery.schedules import crontab
+import urllib
 
 
 
@@ -36,20 +40,13 @@ class URLL(models.Model):
 
 @receiver(post_save, sender=URLL)
 def dfs_url(instance, **kwargs):
+    from .tasks import first
     if instance.hight_recurcian > 0:
         page = requests.get(instance)
         page = html.fromstring(page.content)
         l = page.xpath('//a/@href')[:100]
         l = set(l)
-        for url in l :
-            prime = False
-            for i in URLL.objects.all():
-                if str(i)==str(url):
-                    prime = True
-            if prime==False  and (url.startswith("http") or url.startswith("https")):
-                print url + " +++ "
-                URLL(url_adres=url,hight_recurcian=instance.hight_recurcian-1).save()
-
+        first.delay(l, instance.hight_recurcian)
 
 class Text(models.Model):
     text = models.TextField()
