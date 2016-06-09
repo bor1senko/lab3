@@ -11,12 +11,9 @@ class URLL(models.Model):
     url_adres = models.URLField(max_length=200)
     index = models.TextField(editable=False)
     title = models.CharField(max_length=200, editable=False)
-    flag = models.BooleanField(editable=False, default=False)
     hight_recurcian = models.IntegerField(default = 0)
     i = int()
     def save(self):
-        if self.hight_recurcian == 0:
-            self.flag = True
         page = requests.get(self.url_adres)
         p = html.fromstring(page.content)
         l = []
@@ -39,15 +36,19 @@ class URLL(models.Model):
 
 @receiver(post_save, sender=URLL)
 def dfs_url(instance, **kwargs):
-    print instance.url_adres
-    if instance.flag == False:
+    if instance.hight_recurcian > 0:
         page = requests.get(instance)
         page = html.fromstring(page.content)
         l = page.xpath('//a/@href')[:100]
         l = set(l)
         for url in l :
-            if url.startswith("http") or url.startswith("https"):
-                URLL(url_adres=url, flag=True ,hight_recurcian=instance.hight_recurcian-1).save()
+            prime = False
+            for i in URLL.objects.all():
+                if str(i)==str(url):
+                    prime = True
+            if prime==False  and (url.startswith("http") or url.startswith("https")):
+                print url + " +++ "
+                URLL(url_adres=url,hight_recurcian=instance.hight_recurcian-1).save()
 
 
 class Text(models.Model):
